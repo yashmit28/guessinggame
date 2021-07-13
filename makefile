@@ -1,7 +1,9 @@
-all: file1.txt file2.txt
-file1.txt:
-	echo "file1" > file1.txt
-file2.txt:
-	echo "file2" > file2.txt
+all: README.md
+README.md: guessinggame.sh
+	touch README.md
+	echo "# guessinggame" > README.md
+	echo $$(date) >> README.md
+	echo " \n" >> README.md
+	wc -l guessinggame.sh | egrep -o "[0-9]+" >> README.md
 clean:
-	rm file1.txt file2.txt
+	rm  README.md
